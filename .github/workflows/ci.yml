@@ -1,0 +1,14 @@
+name: Part 1 CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate docs
+        run: |
+          ls -R docs/
+          test -f docs/DaisyDashRaceDay.sql
+          test -f docs/ERD.png
+          test -f docs/API_Endpoint_Plan.md
+          echo "Build OK - All files present"
