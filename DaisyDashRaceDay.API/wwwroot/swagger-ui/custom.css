@@ -1,0 +1,68 @@
+﻿/* DAISY DASH - PINK & GREY THEME */
+:root {
+    --daisy-pink: #ff69b4;
+    --daisy-hot-pink: #ff1493;
+    --daisy-light-pink: #fff0f6;
+    --daisy-grey: #6c757d;
+    --daisy-dark-grey: #343a40;
+    --daisy-light-grey: #f8f9fa;
+}
+
+/* Page background - light grey */
+body {
+    background: var(--daisy-light-grey) !important;
+}
+
+/* Top bar - dark grey with pink accent border */
+.swagger-ui .topbar {
+    background-color: var(--daisy-dark-grey) !important;
+    border-bottom: 5px solid var(--daisy-pink) !important;
+}
+
+/* Title text - hot pink */
+.swagger-ui .info .title {
+    color: var(--daisy-dark-grey) !important;
+    font-weight: bold;
+}
+
+.swagger-ui .info li, .swagger-ui .info p {
+    color: var(--daisy-grey) !important;
+}
+
+/* GET buttons - pink */
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+    background: var(--daisy-pink) !important;
+}
+
+.swagger-ui .opblock.opblock-get {
+    border-color: var(--daisy-pink) !important;
+    background: rgba(255,105,180,0.08) !important;
+}
+
+/* POST buttons - hot pink */
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+    background: var(--daisy-hot-pink) !important;
+}
+
+.swagger-ui .opblock.opblock-post {
+    border-color: var(--daisy-hot-pink) !important;
+    background: rgba(255,20,147,0.08) !important;
+}
+
+/* Execute button - pink */
+.btn.execute, .swagger-ui .btn.execute {
+    background-color: var(--daisy-pink) !important;
+    border-color: var(--daisy-pink) !important;
+    color: white !important;
+}
+
+/* Models section - grey */
+.swagger-ui .opblock-tag {
+    color: var(--daisy-dark-grey) !important;
+    border-bottom: 2px solid var(--daisy-light-grey) !important;
+}
+
+.swagger-ui .model-box {
+    background: var(--daisy-light-grey) !important;
+    border: 1px solid #dee2e6 !important;
+}
