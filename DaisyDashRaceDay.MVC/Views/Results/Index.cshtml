@@ -1,0 +1,47 @@
+﻿@model List<DaisyDashRaceDay.MVC.Models.ResultsViewModel>
+@{
+    ViewData["Title"] = "Results";
+    var eventId = ViewBag.EventId;
+}
+
+<h2>Results</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<a asp-action="Create" asp-route-eventId="@eventId" class="btn btn-primary mb-3">+ Add Result</a>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No results yet for this event.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Participant</th>
+                <th>Finish Time</th>
+                <th style="width: 120px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model.OrderBy(x => x.Position))
+            {
+                <tr>
+                    <td><strong>@r.Position</strong></td>
+                    <td>@r.ParticipantName</td>
+                    <td>@r.FinishTime</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@r.Id" asp-route-eventId="@eventId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Events" asp-action="Index" class="btn btn-secondary">Back to Events</a>

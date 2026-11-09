@@ -1,0 +1,24 @@
+﻿@model DaisyDashRaceDay.MVC.Models.CategoryViewModel
+@{
+    ViewData["Title"] = "Add Category";
+}
+
+<h2>Add Category</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="EventId" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" placeholder="e.g. 5K - Under 18, 10K - Open" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Category</button>
+    <a asp-action="Index" asp-route-eventId="@Model.EventId" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,22 @@
+﻿@model DaisyDashRaceDay.MVC.Models.ResultsViewModel
+@{
+    ViewData["Title"] = "Delete Result";
+}
+
+<h2>Delete Result</h2>
+<h4 class="text-danger">Are you sure you want to delete this result?</h4>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <p><strong>Participant:</strong> @Model.ParticipantName</p>
+        <p><strong>Position:</strong> @Model.Position</p>
+        <p><strong>Finish Time:</strong> @Model.FinishTime</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" name="eventId" value="@Model.EventId" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="Index" asp-route-eventId="@Model.EventId" class="btn btn-secondary">Cancel</a>
+</form>

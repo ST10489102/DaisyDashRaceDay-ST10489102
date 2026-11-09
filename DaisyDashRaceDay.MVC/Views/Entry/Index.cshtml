@@ -1,0 +1,47 @@
+﻿@model List<DaisyDashRaceDay.MVC.Models.EntryViewModel>
+@{
+    ViewData["Title"] = "Entries";
+    var eventId = ViewBag.EventId;
+}
+
+<h2>Entries</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<a asp-action="Create" asp-route-eventId="@eventId" class="btn btn-primary mb-3">+ Add Entry</a>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No entries yet for this event.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Email</th>
+                <th>Category</th>
+                <th style="width: 120px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.ParticipantName</td>
+                    <td>@e.Email</td>
+                    <td>@e.CategoryName</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@e.Id" asp-route-eventId="@eventId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Events" asp-action="Index" class="btn btn-secondary">Back to Events</a>

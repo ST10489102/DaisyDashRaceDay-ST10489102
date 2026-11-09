@@ -1,0 +1,50 @@
+﻿@model List<DaisyDashRaceDay.MVC.Models.CategoryViewModel>
+@{
+    ViewData["Title"] = "Categories";
+    var eventId = ViewBag.EventId;
+    var role = Context.Session.GetString("Role");
+}
+
+<h2>Categories</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (role == "Organiser")
+{
+    <a asp-action="Create" asp-route-eventId="@eventId" class="btn btn-primary mb-3">+ Add Category</a>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <p>No categories yet for this event.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th style="width: 150px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                    <td>
+                        @if (role == "Organiser")
+                        {
+                            <a asp-action="Delete" asp-route-id="@c.Id" asp-route-eventId="@eventId" class="btn btn-danger btn-sm">Delete</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Events" asp-action="Index" class="btn btn-secondary">Back to Events</a>

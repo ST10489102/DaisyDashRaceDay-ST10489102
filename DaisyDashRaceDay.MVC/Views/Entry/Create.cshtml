@@ -1,0 +1,42 @@
+﻿@model DaisyDashRaceDay.MVC.Models.EntryViewModel
+@{
+    ViewData["Title"] = "Add Entry";
+}
+
+<h2>Add Entry</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="EventId" />
+
+    <div class="mb-3">
+        <label asp-for="ParticipantName" class="form-label"></label>
+        <input asp-for="ParticipantName" class="form-control" placeholder="Full name" />
+        <span asp-validation-for="ParticipantName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" placeholder="name@example.com" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label"></label>
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">-- Select Category --</option>
+            @foreach (var c in Model.Categories)
+            {
+                <option value="@c.Id">@c.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Entry</button>
+    <a asp-action="Index" asp-route-eventId="@Model.EventId" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
