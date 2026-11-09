@@ -1,0 +1,6 @@
+@DaisyDashRaceDay.API_HostAddress = http://localhost:5173
+
+GET {{DaisyDashRaceDay.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
